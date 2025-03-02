@@ -1,0 +1,23 @@
+<h2>Modifier le Post</h2>
+
+<form [formGroup]="formPost" (ngSubmit)="saveChanges()" >
+    <!-- <div class="mb3">
+        <label for="id" class="form-label">Id</label>
+        <input type="text" id="id" formControlName="id" class="form-control">
+    </div> -->
+    <div class="mb3">
+        <label for="userId" class="form-label">UserId</label>
+        <input type="text" id="userId" formControlName="userId" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input id="title" type="text" formControlName="title" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="body" class="form-label">Body</label>
+        <input id="body" type="text" formControlName="body" class="form-control">
+    </div>
+
+    <button class="btn btn-success" [disabled]="formPost.invalid" >Enregistrer</button>
+    <button class="btn btn-secondary" routerLink="/">Annuler</button>
+</form>

@@ -1,0 +1,56 @@
+<h2>Liste des Postes</h2>
+
+<!-- Conteneur pour le bouton et le champ de recherche -->
+<div class="d-flex align-items-center gap-2 mt-3 mb-3">
+  <button class="btn btn-success" (click)="addPost()">Ajouter un Post</button>
+
+  <div class="form-outline">
+    <input 
+      type="search" 
+      id="form1"
+      class="form-control" 
+      placeholder="Rechercher un post..."
+      aria-label="search" 
+      [(ngModel)]="searchText" 
+      (input)="filterPostsByTitle($event)"
+      style="width: 500px;"
+    />
+  </div>
+</div>
+
+<!-- Modal -->
+<div>
+  <app-modal 
+   [post]="selectedPost" 
+   (savePost)="updatePost($event)">
+  </app-modal>
+</div>
+
+<!-- Tableau des posts -->
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of filteredPosts | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" 
+       (click)="showPostDetails(post)" style="cursor: pointer;">
+      <td>{{post.id}}</td>
+      <td>{{post.title}}</td>
+      <td>
+        <button class="btn btn-primary btn-sm" (click)="editPost(post.id)">Modifier</button>
+        <button class="btn btn-danger btn-sm" (click)="deletePost(post.id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Pagination -->
+<pagination-controls 
+  (pageChange)="currentPage = $event" 
+  previousLabel="Précédent" 
+  nextLabel="Suivant">
+</pagination-controls>

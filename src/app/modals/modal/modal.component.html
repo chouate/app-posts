@@ -1,0 +1,62 @@
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+<button (click)="openModal()">show</button> -->
+<!-- Modal -->
+<div *ngIf="post" #myModal class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Détails du Post : {{postCopy.id}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form >
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input [(ngModel)]="postCopy.title" type="text" id="title" name="title" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="body">Body</label>
+            <input [(ngModel)]="postCopy.body" type="text" id="body" name="body" class="form-control">
+          </div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary" (click)="save()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="modal fade show d-block" *ngIf="post" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Détails du Post</h5>
+        <button type="button" class="close" (click)="close()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="save()">
+          <div class="form-group">
+            <label for="title">Titre</label>
+            <input type="text" id="title" [(ngModel)]="post.title" name="title" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="body">Contenu</label>
+            <textarea id="body" [(ngModel)]="post.body" name="body" class="form-control"></textarea>
+          </div>
+          <button type="submit" class="btn btn-success mt-2">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
