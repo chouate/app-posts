@@ -45,7 +45,10 @@ export class ListPostsComponent implements OnInit {
   }
 
   deletePost(id: number): void {
-    this.postservice.deletePost(id);
+    var res = confirm("Êtes-vous sûr de vouloir supprimer?");
+    if(res){
+      this.postservice.deletePost(id);
+    }
   }
   
   editPost(id: number): void {
