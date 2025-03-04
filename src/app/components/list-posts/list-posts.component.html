@@ -35,9 +35,10 @@
       <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="filteredPosts">
+    <!-- (click)="showPostDetails(post)" -->
     <tr *ngFor="let post of filteredPosts | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" 
-       (click)="showPostDetails(post)" style="cursor: pointer;">
+        style="cursor: pointer;">
       <td>{{post.id}}</td>
       <td>{{post.title}}</td>
       <td>
