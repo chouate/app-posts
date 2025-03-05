@@ -36,8 +36,8 @@
     </tr>
   </thead>
   <tbody *ngIf="filteredPosts">
-    <!-- (click)="showPostDetails(post)" -->
-    <tr *ngFor="let post of filteredPosts | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" 
+    
+    <tr (click)="showPostDetails(post)" *ngFor="let post of filteredPosts | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" 
         style="cursor: pointer;">
       <td>{{post.id}}</td>
       <td>{{post.title}}</td>

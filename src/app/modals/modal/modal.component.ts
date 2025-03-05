@@ -22,8 +22,12 @@ export class ModalComponent  {
     if(this.post){
       this.postCopy = { ...this.post}
     }
-    //@ts-ignore
-    $(this.myModal.nativeElement).modal('show');
+    
+    if(this.myModal){// assure que le modal est disponible
+      //@ts-ignore
+      $(this.myModal.nativeElement).modal('show');
+    }
+      
   }
   closeModal(){
     //@ts-ignore

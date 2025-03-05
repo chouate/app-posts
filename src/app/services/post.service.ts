@@ -61,14 +61,7 @@ export class PostService {
         })
       )
     }
-
-    // addPostToApiSpring(post:Post):Observable<Post>{
-      
-    //   return this.http.post<Post>(this.apiSpring, Post).pipe(
-    //     tap((response) => this.log(response)),
-    //     catchError((error)=> this.handleError(error, null))
-    //   );
-    // }
+    
   //********************************************************************************
   getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(this.apiUrl).pipe(

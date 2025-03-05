@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../../services/post.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Post } from '../../models/post';
@@ -13,13 +13,13 @@ import { response } from 'express';
 })
 export class FormPostComponent implements OnInit{
 
-  formPost!: FormGroup;
+  formPost: FormGroup;
   postId: number;
   constructor(
     private postservice: PostService,
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
+    //private formBuilder: FormBuilder,
 
   ){}
 
@@ -34,11 +34,11 @@ export class FormPostComponent implements OnInit{
             
             console.table(postResponse);
             if(postResponse){
-              this.formPost = this.formBuilder.group({
-                // id: [post.id, Validators.required],
-                userId: [postResponse.userId, Validators.required],
-                title: [postResponse.title,Validators.required],
-                body: [postResponse.body, Validators.required]
+              this.formPost = new FormGroup({
+                //id: new FormControl(postResponse.id, Validators.required),
+                userId: new FormControl(postResponse.userId, Validators.required),
+                title: new FormControl (postResponse.title,Validators.required),
+                body: new FormControl(postResponse.body, Validators.required)
               });
     
             }
@@ -47,11 +47,11 @@ export class FormPostComponent implements OnInit{
         });
         
       }else{
-        this.formPost = this.formBuilder.group({
-          // id: ['', Validators.required],
-          userId: ['', Validators.required],
-          title: ['',Validators.required],
-          body: ['', Validators.required]
+        this.formPost = new FormGroup({
+          //id: new FormControl('', Validators.required),
+          userId: new FormControl('', Validators.required),
+          title: new FormControl ('',Validators.required),
+          body: new FormControl('', Validators.required)
         });
       }
       

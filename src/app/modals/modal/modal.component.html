@@ -4,11 +4,11 @@
 </button>
 <button (click)="openModal()">show</button> -->
 <!-- Modal -->
-<div *ngIf="post" #myModal class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div *ngIf="post" #myModal class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" >
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div *ngIf="postCopy" class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Détails du Post : {{postCopy.id}}</h5>
+        <h5  class="modal-title" id="exampleModalLabel">Détails du Post : {{postCopy.id}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

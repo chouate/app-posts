@@ -3,6 +3,8 @@ import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
 import { Router } from '@angular/router';
 import { ModalComponent } from '../../modals/modal/modal.component';
+import { post } from 'jquery';
+import { error } from 'console';
 
 @Component({
   selector: 'app-list-posts',
@@ -98,11 +100,20 @@ export class ListPostsComponent implements OnInit {
     });
   }
 
+  // updatePost(updatedPost: Post) {
+  //   const index = this.posts.findIndex(p => p.id === updatedPost.id);
+  //   if (index !== -1) {
+  //     this.posts[index] = updatedPost; // Mise à jour du post modifié
+  //   }
+  // }
   updatePost(updatedPost: Post) {
-    const index = this.posts.findIndex(p => p.id === updatedPost.id);
-    if (index !== -1) {
-      this.posts[index] = updatedPost; // Mise à jour du post modifié
-    }
+    this.postservice.updatePostFromApiSpring(updatedPost).subscribe({
+      next: (post)=>{
+        console.log("La modification du post est réussie:",post),
+        this.loadPosts();
+      },
+      error: (err)=> console.error("Erreur lors de la modification du post via le modal!")
+    })
   }
 
 
